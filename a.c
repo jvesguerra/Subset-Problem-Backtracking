@@ -93,6 +93,7 @@ int main(){
 						int checker;
 						int flag;
 
+						// FIND THE COMBINATIONS
 						for(i=1;i<move;i++){
 							//printf("%d ",option[i][nopts[i]]);
 							set1_sum += option[i][nopts[i]];
@@ -100,9 +101,9 @@ int main(){
 							arr[counter] = option[i][nopts[i]];
 							counter++;
 						}
-						//printf("\n");						
+										
 
-						
+						// FIND THE OTHER HALF OF 1ST ARR
 						for(int y = 0; y < candidate_size; y ++){
 							flag = 0;
 							for(int x =0; x < counter; x++){
@@ -121,18 +122,22 @@ int main(){
 								}
 						}
 						
+						// IF EQUAL PRINT BOTH SUBSETS
 						if(set2_sum == set1_sum){
 							// printf("SET1: SUM %d ",set1_sum);
 							// printf("SET2: %d \n",set2_sum);
-							printf("{ ");
-							for(int pt1 = 0; pt1 < counter; pt1++)
-								printf("%2i", arr[pt1]);
-							printf(" }  { ");
-							for(int pt2 = 0; pt2 < counter2; pt2++)
-								printf("%2i", arr2[pt2]);
-							printf(" }");
+							
+							if(nopts[1] == candidate_size){
+								printf("{");
+								for(int pt1 = 0; pt1 < counter; pt1++)
+									printf("%2i", arr[pt1]);
+								printf(" } {");
+								for(int pt2 = 0; pt2 < counter2; pt2++)
+									printf("%2i", arr2[pt2]);
+								printf(" }");
 
-							printf("\n");
+								printf("\n");
+							}
 						}
 						
 						break;
