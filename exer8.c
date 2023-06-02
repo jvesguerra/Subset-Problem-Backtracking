@@ -18,13 +18,7 @@ int main(){
 			move++;
 			nopts[move]=0; //initialize new move
 
-			if(move==N+1) //solution found!
-			{
-				// for(i=1;i<move;i++)
-				// 	printf("%2i",option[i][nopts[i]]);
-				// 	printf("\n");
-			}
-			else if(move == 1){	// initail fill the candidates
+			if(move == 1){	// initail fill the candidates
 				for(candidate = N; candidate >=1; candidate --) 
 				{
 					nopts[move]++;
@@ -41,7 +35,7 @@ int main(){
 					if((!(i>=1)) && candidate > option[move-1][nopts[move-1]]){	// no duplicates found
 					//if((!(i>=1)))
 						option[move][++nopts[move]] = candidate;
-						printf("nopts[move] %i candidate %i\n", nopts[move], candidate);
+						//printf("nopts[move] %i candidate %i\n", nopts[move], candidate);
 					}else{
 						for(i=1;i<move;i++)
 							printf("%2i",option[i][nopts[i]]);
