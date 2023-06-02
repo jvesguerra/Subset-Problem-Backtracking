@@ -1,6 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define N 3
+// Function to compare two arrays of not same length and find their different elements
+void compare_arrays(int *array1, int *array2, int size1, int size2) {
+  int i, j;
+
+  // Iterate over the arrays and compare the elements
+  for (i = 0; i < size1; i++) {
+    if (i >= size2) {
+      printf("The different element at index %d is: %d\n", i, array1[i]);
+    } else if (array1[i] != array2[i]) {
+      printf("The different element at index %d is: %d\n", i, array1[i]);
+    }
+  }
+
+  for (j = size1; j < size2; j++) {
+    printf("The different element at index %d is: %d\n", j, array2[j]);
+  }
+}
 
 int main(){
 	int start, move;
@@ -9,7 +27,7 @@ int main(){
 	FILE *fp;
 	int numIn;
 	int numOfTest;
-	int i, j;
+	int i, j, k;
 
 	int* candidate = (int*)malloc(10*sizeof(int));
 	int cnt = 0;
@@ -65,9 +83,36 @@ int main(){
 						option[move][++nopts[move]] = candidate[j-1];
 						//printf("nopts[move] %i candidate %i\n", nopts[move], candidate[j]);
 					}else{
-						for(i=1;i<move;i++)
-							printf("%3i",option[i][nopts[i]]);
-							printf("\n");
+						int set1_sum = 0;
+						int *arr;
+						int counter = 0;
+						arr = (int*)calloc(candidate_size, sizeof(int));
+						int checker;
+
+						for(i=1;i<move;i++){
+							//printf("%d ",option[i][nopts[i]]);
+							//printf("\n");
+							set1_sum += option[i][nopts[i]];
+
+							arr[counter] = option[i][nopts[i]];
+							counter++;
+						}
+						// for(int k=0;k<counter;k++)
+						// 	printf("%2i",arr[k]);
+						printf("\n");						
+						//printf("\n%d\n",set1_sum);
+
+						printf("Remaining numbers: ");
+						for(int y = 0; y < candidate_size; y ++){
+							for(int x =0; x < counter; x++){
+								if(candidate[y] != arr[x]){
+									printf("%d ",candidate[y]);
+								}
+							} 
+						}
+
+						
+						// printf("\n");
 						break;
 					}							
 				}
