@@ -2,23 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #define N 3
-// Function to compare two arrays of not same length and find their different elements
-void compare_arrays(int *array1, int *array2, int size1, int size2) {
-  int i, j;
-
-  // Iterate over the arrays and compare the elements
-  for (i = 0; i < size1; i++) {
-    if (i >= size2) {
-      printf("The different element at index %d is: %d\n", i, array1[i]);
-    } else if (array1[i] != array2[i]) {
-      printf("The different element at index %d is: %d\n", i, array1[i]);
-    }
-  }
-
-  for (j = size1; j < size2; j++) {
-    printf("The different element at index %d is: %d\n", j, array2[j]);
-  }
-}
 
 int main(){
 	int start, move;
@@ -95,7 +78,6 @@ int main(){
 
 						// FIND THE COMBINATIONS
 						for(i=1;i<move;i++){
-							//printf("%d ",option[i][nopts[i]]);
 							set1_sum += option[i][nopts[i]];
 
 							arr[counter] = option[i][nopts[i]];
@@ -113,8 +95,6 @@ int main(){
 								}
 							} 
 							if (flag == 0) {
-								//printf("%d ",candidate[y]);
-
 								set2_sum += candidate[y];
 
 								arr2[counter2] = candidate[y];
@@ -124,9 +104,6 @@ int main(){
 						
 						// IF EQUAL PRINT BOTH SUBSETS
 						if(set2_sum == set1_sum){
-							// printf("SET1: SUM %d ",set1_sum);
-							// printf("SET2: %d \n",set2_sum);
-							
 							if(nopts[1] == candidate_size){
 								printf("{");
 								for(int pt1 = 0; pt1 < counter; pt1++)
